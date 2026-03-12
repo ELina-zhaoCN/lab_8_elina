@@ -7,3 +7,5 @@
 !/turtlebot4_ws/src/lab8/
 !/turtlebot4_ws/src/lab8_msgs/
 /answers
+**/__pycache__/
+*.zip

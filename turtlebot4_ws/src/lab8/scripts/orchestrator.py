@@ -74,7 +74,7 @@ class OrchestratorNode(Node):
         for attempt in range(5):
             try:
                 t = self.tf_buffer.lookup_transform(
-                    'map', 'base_footprint', rclpy.time.Time(),
+                    'map', 'base_link', rclpy.time.Time(),
                     timeout=rclpy.duration.Duration(seconds=3.0)
                 )
                 break
@@ -134,7 +134,7 @@ class OrchestratorNode(Node):
         rclpy.spin_until_future_complete(self, result_future)
 
         result = result_future.result().result
-        if result.success and result.aruco_pose.header.frame_id:
+        if result.aruco_found and result.aruco_pose.header.frame_id:
             self.aruco_pose = result.aruco_pose
             self.get_logger().info('ArUco cube found via Explore action!')
         else:

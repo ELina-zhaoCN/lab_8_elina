@@ -13,6 +13,8 @@ install(PROGRAMS
   scripts/orchestrator.py
   scripts/explore_action_server.py
   scripts/aruco_detector.py
+  scripts/odom_to_tf.py
+  scripts/wall_follower.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

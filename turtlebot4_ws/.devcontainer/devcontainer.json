@@ -1,28 +1,34 @@
 {
-  "name": "turtlebot4_ws",
-  "dockerFile": "Dockerfile",
-  "runArgs": [
-    "--privileged",
-    "--network=host",
-    "--gpus", "all",
-    "-e", "DISPLAY=${localEnv:DISPLAY}"
-  ],
-  "workspaceMount": "source=${localWorkspaceFolder},target=/home/ubuntu/turtlebot4_ws,type=bind",
-  "workspaceFolder": "/home/ubuntu/turtlebot4_ws",
-  "mounts": [
-    "source=/etc/timezone,target=/etc/timezone,type=bind",
-    "source=/etc/localtime,target=/etc/localtime,type=bind",
-    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
-    "source=/dev,target=/dev,type=bind",
-    "source=/etc/udev,target=/etc/udev,type=bind"
-  ],
-  "postStartCommand": "bash -lc 'cd \"${containerWorkspaceFolder}\" && rosdep install --from-path src -yi --rosdistro humble && source /opt/ros/humble/setup.bash && colcon build --symlink-install'",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter"
-      ]
-    }
-  }
+    "name": "TurtleBot4",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "ROS_DISTRO": "humble"
+        }
+    },
+    "runArgs": [
+        "--privileged",
+        "--network=host",
+        "-e", "DISPLAY=${localEnv:DISPLAY}"
+    ],
+    "postStartCommand": "bash -lc 'cd \"${containerWorkspaceFolder}\" && rosdep install --from-path src -yi --rosdistro humble && source /opt/ros/humble/setup.bash && colcon build --symlink-install'",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/bin/python3",
+                "python.terminal.activateEnvironment": false
+            }
+        }
+    },
+    "mounts": [
+        "source=/etc/timezone,target=/etc/timezone,type=bind",
+        "source=/etc/localtime,target=/etc/localtime,type=bind",
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
+        "source=/dev,target=/dev,type=bind",
+        "source=/etc/udev,target=/etc/udev,type=bind"
+    ]
 }

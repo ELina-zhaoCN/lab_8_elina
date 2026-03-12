@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CycloneDDS>
+<Domain>
+<General>
+<NetworkInterfaceAddress>enp133s0</NetworkInterfaceAddress>
+<AllowMulticast>true</AllowMulticast>
+</General>
+<Discovery>
+<Peers>
+<Peer address="10.155.234.57"/>
+<Peer address="10.155.234.175"/>
+<Peer address="10.155.234.130"/>
+<Peer address="10.155.234.209"/>
+<Peer address="10.155.234.2"/>
+<Peer address="10.155.234.3"/>
+</Peers>
+</Discovery>
+</Domain>
+</CycloneDDS>
